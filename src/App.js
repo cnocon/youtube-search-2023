@@ -50,7 +50,7 @@ function App() {
       <Header />
       <Container>
         <Row className="App">
-          <Col md={7} style={{justifyContent: 'center', display: 'flex', height: '300px', alignItems: 'center', margin: '2rem auto', flexWrap: 'wrap'}}>
+          <Col md={7} style={{justifyContent: 'center', display: 'flex', height: '400px', alignItems: 'center', margin: '2rem auto', flexWrap: 'wrap'}}>
              {loadingMainVid && activeItem ? <Spinner /> : <Video id={activeItem} />}
           </Col>
           <Col md={7} style={{margin: '0 auto'}}>

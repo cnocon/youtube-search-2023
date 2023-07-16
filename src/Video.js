@@ -6,7 +6,7 @@ const Video = ({ id }) => {
     key={id}
     title={id}
     width="100%"
-    height="300px"
+    height="400px"
     src={`https://www.youtube.com/embed/${id}?autoplay=1`}
     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
     allowFullScreen

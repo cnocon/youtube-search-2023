@@ -14,7 +14,8 @@ const Footer = ({ setLoadingMainVid, setActiveItem, item, loading }) => {
         <span className="visually-hidden">Loading...</span>
       </Spinner>
     ) : (
-      <Card style={{flexBasis: '30%'}}>
+      <Card style={{flexBasis: '30%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        <Card.Header style={{width: '100%', textAlign: 'center', fontWeight: '600'}}>{item.snippet.title}</Card.Header>
         <Card.Body style={{display: 'flex', height: '100%', justifyContent: 'center'}}>
           <Image
             src={item.snippet.thumbnails.medium.url}
@@ -30,7 +31,7 @@ const Footer = ({ setLoadingMainVid, setActiveItem, item, loading }) => {
             }}
           />
       </Card.Body>
-      <Card.Footer>{item.snippet.title}</Card.Footer>
+      <Card.Footer>{item.snippet.description}</Card.Footer>
     </Card>
   );
 }
