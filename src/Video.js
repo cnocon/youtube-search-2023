@@ -10,7 +10,7 @@ const Video = ({ id }) => {
     src={`https://www.youtube.com/embed/${id}?autoplay=1`}
     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
     allowFullScreen
-    autoplay
+    autoPlay
   ></iframe>
 }
 

@@ -1,7 +1,7 @@
 const fauxData = {
   "kind": "youtube#searchListResponse",
-  "etag": "fDnE7LkCZ-iSB5lYOe-ZpY5TSBA",
-  "nextPageToken": "CBkQAA",
+  "etag": "xb79iRzmeL7wf9-e8sDjmmE-I90",
+  "nextPageToken": "CAUQAA",
   "regionCode": "US",
   "pageInfo": {
     "totalResults": 1000000,
@@ -10,166 +10,172 @@ const fauxData = {
   "items": [
     {
       "kind": "youtube#searchResult",
-      "etag": "tfQWx55pleGQCTvHYENtsA0OV5U",
+      "etag": "Z_y1zc9bYR83ENHoAVAi6AWDxNw",
       "id": {
         "kind": "youtube#video",
-        "videoId": "SWHGtG9J1P4"
+        "videoId": "x-y9NvOp21E"
       },
       "snippet": {
-        "publishedAt": "2023-07-11T17:51:09Z",
-        "channelId": "UC9k-yiEpRHMNVOnOi_aQK8w",
-        "title": "Pro Surfer Mikala Jones Dead at 44",
-        "description": "Pro Surfer Mikala Jones has died. Jones was known as a pioneer in creating point-of-view surfing content. His GoPro videos gave ...",
+        "publishedAt": "2023-07-15T16:00:42Z",
+        "channelId": "UCcnThqTwvub5ykbII9WkR5g",
+        "title": "Funny animals - Funny cats / dogs - Funny animal videos 297",
+        "description": "Funny animal videos! Compilation number 297. Only the best! Sit back and charge positively Funny animal videos (funny cats, ...",
         "thumbnails": {
           "default": {
-            "url": "https://i.ytimg.com/vi/SWHGtG9J1P4/default.jpg",
+            "url": "https://i.ytimg.com/vi/x-y9NvOp21E/default.jpg",
             "width": 120,
             "height": 90
           },
           "medium": {
-            "url": "https://i.ytimg.com/vi/SWHGtG9J1P4/mqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/x-y9NvOp21E/mqdefault.jpg",
             "width": 320,
             "height": 180
           },
           "high": {
-            "url": "https://i.ytimg.com/vi/SWHGtG9J1P4/hqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/x-y9NvOp21E/hqdefault.jpg",
             "width": 480,
             "height": 360
           }
         },
-        "channelTitle": "Inside Edition",
+        "channelTitle": "Happy Dog",
         "liveBroadcastContent": "none",
-        "publishTime": "2023-07-11T17:51:09Z"
+        "publishTime": "2023-07-15T16:00:42Z"
       }
     },
     {
       "kind": "youtube#searchResult",
-      "etag": "uj6isDPOfgNLeKBl12rL-8K3kBI",
+      "etag": "QKTdQ_Rgfa9f3qhcaaUpH2uGnsc",
       "id": {
         "kind": "youtube#video",
-        "videoId": "rVTR2QVXpTI"
+        "videoId": "y0sF5xhGreA"
       },
       "snippet": {
-        "publishedAt": "2023-07-10T23:20:00Z",
-        "channelId": "UChuLeaTGRcfzo0UjL-2qSbQ",
-        "title": "BATTLE FOR THE AGES. Andy Irons vs Kelly Slater at J-Bay 2005",
-        "description": "Rewind and relive this iconic year at Jeffreys Bay where Andy Irons and Kelly Slater battle it out in the final with firing conditions.",
+        "publishedAt": "2023-05-28T13:00:44Z",
+        "channelId": "UCPIvT-zcQl2H0vabdXJGcpg",
+        "title": "20 Minutes of Adorable Kittens 😍 | BEST Compilation",
+        "description": "Cute, cuddly, and utterly chaotic! These adorable kittens are jumping in the dog-pile in this collection of cute and hilarious kitty ...",
         "thumbnails": {
           "default": {
-            "url": "https://i.ytimg.com/vi/rVTR2QVXpTI/default.jpg",
+            "url": "https://i.ytimg.com/vi/y0sF5xhGreA/default.jpg",
             "width": 120,
             "height": 90
           },
           "medium": {
-            "url": "https://i.ytimg.com/vi/rVTR2QVXpTI/mqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/y0sF5xhGreA/mqdefault.jpg",
             "width": 320,
             "height": 180
           },
           "high": {
-            "url": "https://i.ytimg.com/vi/rVTR2QVXpTI/hqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/y0sF5xhGreA/hqdefault.jpg",
             "width": 480,
             "height": 360
           }
         },
-        "channelTitle": "World Surf League",
+        "channelTitle": "The Pet Collective",
         "liveBroadcastContent": "none",
-        "publishTime": "2023-07-10T23:20:00Z"
+        "publishTime": "2023-05-28T13:00:44Z"
       }
     },
     {
       "kind": "youtube#searchResult",
-      "etag": "88EuiueBfCdZvtWYLLe80anPAjE",
+      "etag": "iu3VQSWGiZz6c1l8lJWVlCJNmmQ",
       "id": {
         "kind": "youtube#video",
-        "videoId": "nreTjMPRCfo"
+        "videoId": "-LFSpfxBcm4"
       },
       "snippet": {
-        "publishedAt": "2023-07-11T08:56:38Z",
-        "channelId": "UCtqFUxpLnV-RaraQVu1rMTw",
-        "title": "Friends mourn loss of Hawaii, Indonesia surfer Mikala Jones",
-        "description": "Hawaii surfer Mikala Jones passed away while surfing at a remote secret wave off the Mentawais Saturday evening Hawaii ...",
+        "publishedAt": "2023-06-03T15:01:53Z",
+        "channelId": "UCpxMKX-QiDAedXw1QRUigZQ",
+        "title": "New Funny Animals 😂 Funniest Cats and Dogs Videos 😺🐶",
+        "description": "Funny animals! Compilation number 1. Only the best! Sit back and charge positively Funny animal videos (funny cats, dogs and ...",
         "thumbnails": {
           "default": {
-            "url": "https://i.ytimg.com/vi/nreTjMPRCfo/default.jpg",
+            "url": "https://i.ytimg.com/vi/-LFSpfxBcm4/default.jpg",
             "width": 120,
             "height": 90
           },
           "medium": {
-            "url": "https://i.ytimg.com/vi/nreTjMPRCfo/mqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/-LFSpfxBcm4/mqdefault.jpg",
             "width": 320,
             "height": 180
           },
           "high": {
-            "url": "https://i.ytimg.com/vi/nreTjMPRCfo/hqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/-LFSpfxBcm4/hqdefault.jpg",
             "width": 480,
             "height": 360
           }
         },
-        "channelTitle": "KHON2 News",
+        "channelTitle": "Cute Kittens",
         "liveBroadcastContent": "none",
-        "publishTime": "2023-07-11T08:56:38Z"
+        "publishTime": "2023-06-03T15:01:53Z"
       }
     },
     {
       "kind": "youtube#searchResult",
-      "etag": "z6HBQ69w1mKrEXjWFc11hpVeT28",
+      "etag": "IjeVNbN5XqWkiWZ7OHO1zkqszqQ",
       "id": {
         "kind": "youtube#video",
-        "videoId": "sM6tDiOsSOo"
+        "videoId": "ja1sXvNCyO0"
       },
       "snippet": {
-        "publishedAt": "2023-06-23T18:00:32Z",
-        "channelId": "UC--3c8RqSfAqYBdDjIG3UNA",
-        "title": "KAI LENNY Surfs in Final Round of THE EDDIE!",
-        "description": "Kai Lenny chases his big wave dream of a title at The Eddie Aikau Big Wave Invitational before switching gears to compete ...",
+        "publishedAt": "2023-07-07T12:00:40Z",
+        "channelId": "UCYPrd7A27nLhQONcCIfFTaA",
+        "title": "😂YOU LAUGH YOU LOSE! 😹Funny Moments Of Cats Videos Compilation - Funny Cats Life",
+        "description": "Funniest Cats - Don't try to hold back Laughter Watch more cute animals! https://youtube.com/playlist?list=PLH.",
         "thumbnails": {
           "default": {
-            "url": "https://i.ytimg.com/vi/sM6tDiOsSOo/default.jpg",
+            "url": "https://i.ytimg.com/vi/ja1sXvNCyO0/default.jpg",
             "width": 120,
             "height": 90
           },
           "medium": {
-            "url": "https://i.ytimg.com/vi/sM6tDiOsSOo/mqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/ja1sXvNCyO0/mqdefault.jpg",
             "width": 320,
             "height": 180
           },
           "high": {
-            "url": "https://i.ytimg.com/vi/sM6tDiOsSOo/hqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/ja1sXvNCyO0/hqdefault.jpg",
             "width": 480,
             "height": 360
           }
         },
-        "channelTitle": "Red Bull Surfing",
+        "channelTitle": "Funny Cats Life",
         "liveBroadcastContent": "none",
-        "publishTime": "2023-06-23T18:00:32Z"
+        "publishTime": "2023-07-07T12:00:40Z"
       }
     },
     {
       "kind": "youtube#searchResult",
-      "etag": "gk2Nz-61C_l5e-4FTbdmvjd6t6g",
+      "etag": "Zx4EC9ln2xHm6aTJzkFjXNTCYsc",
       "id": {
-        "kind": "youtube#channel",
-        "channelId": "UCKo-NbWOxnxBnU41b-AoKeA"
+        "kind": "youtube#video",
+        "videoId": "YXwnKgSXFKE"
       },
       "snippet": {
-        "publishedAt": "2005-11-02T06:29:47Z",
-        "channelId": "UCKo-NbWOxnxBnU41b-AoKeA",
-        "title": "SURFER",
-        "description": "We founded SURFER Magazine with a mission: to bring our readers a slice of the entire surfing world with each issue. And for ...",
+        "publishedAt": "2023-02-08T11:50:08Z",
+        "channelId": "UCqVXYi_LeGx2-eqH0G6wqaQ",
+        "title": "Monkey Baby Bon Bon oes to the toilet and plays with Ducklings in the swimming pool",
+        "description": "Monkey Baby Bon Bon oes to the toilet and plays with Ducklings in the swimming pool #babymonkey #Animal #Animalht I'm Bon ...",
         "thumbnails": {
           "default": {
-            "url": "https://yt3.ggpht.com/ytc/AOPolaTZS_TJ8dOMI54jZlyGuZAH1Cu-ckL_2qDHEzjumqE=s88-c-k-c0xffffffff-no-rj-mo"
+            "url": "https://i.ytimg.com/vi/YXwnKgSXFKE/default.jpg",
+            "width": 120,
+            "height": 90
           },
           "medium": {
-            "url": "https://yt3.ggpht.com/ytc/AOPolaTZS_TJ8dOMI54jZlyGuZAH1Cu-ckL_2qDHEzjumqE=s240-c-k-c0xffffffff-no-rj-mo"
+            "url": "https://i.ytimg.com/vi/YXwnKgSXFKE/mqdefault.jpg",
+            "width": 320,
+            "height": 180
           },
           "high": {
-            "url": "https://yt3.ggpht.com/ytc/AOPolaTZS_TJ8dOMI54jZlyGuZAH1Cu-ckL_2qDHEzjumqE=s800-c-k-c0xffffffff-no-rj-mo"
+            "url": "https://i.ytimg.com/vi/YXwnKgSXFKE/hqdefault.jpg",
+            "width": 480,
+            "height": 360
           }
         },
-        "channelTitle": "SURFER",
-        "liveBroadcastContent": "upcoming",
-        "publishTime": "2005-11-02T06:29:47Z"
+        "channelTitle": "Animal HT",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-02-08T11:50:08Z"
       }
     }
   ]
