@@ -21,38 +21,44 @@ function App() {
   const [query, setQuery] = useState(null);
   const [loading, setLoading] = useState(false);
   const [activeItem, setActiveItem] = useState(null);
-  const [pageToken, setPageToken] = useState('');
+  const [pageToken, setPageToken] = useState(null);
+  const [prevPageToken, setPrevPageToken] = useState(null);
+  const [nextPageToken, setNextPageToken] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  // React Hooks are simple JavaScript functions that we can use to isolate the reusable part from a functional component. Hooks can be stateful and can manage side-effects
-  let options = useMemo(() => ({
-    key: process.env.REACT_APP_GOOGLE_API_KEY,
-    q: query,
-    part: 'snippet',
-    type: 'video',
-    pageToken: pageToken
-  }), [query, pageToken]);
+  const [pageInfo, setPageInfo] = useState({
+    resultsPerPage: 0,
+    totalResults: 0
+  });
+  const options = useMemo(() => {
+    return {
+      key: process.env.REACT_APP_GOOGLE_API_KEY,
+      q: query,
+      pageToken: pageToken === null ? '' : pageToken,
+      part: 'snippet',
+      type: 'video',
+      maxResults: 3
+    };
+  }, [pageToken, query]);
 
-  let loadVideoResults = useCallback(
+  const loadVideoResults = useCallback(
     async function () {
-      console.log('loadVideoResults: options', options);
       const URL = "https://www.googleapis.com/youtube/v3/search?" + Object.keys(options).map((k) => k + '=' + encodeURIComponent(options[k])).join('&');
       setLoading(true);
 
       await fetch(URL)
       .then(res => res.json())
-      .then(data => {
-        setData(data);
+      .then(jsonRes => {
+        setNextPageToken(jsonRes?.nextPageToken);
+        setPrevPageToken(jsonRes?.prevPageToken);
+        setPageInfo(jsonRes.pageInfo);
+        setData(jsonRes);
         setLoading(false);
       })
       .catch(err => {
         setLoading(false);
-        console.err(err)
+        console.error(err);
       })
     }, [options]);
-
-    React.useEffect(() => {
-      console.log('useEffect: options', options);
-    }, [])
 
   return (
     <div className="wrapper">
@@ -99,43 +105,50 @@ function App() {
           </Col>
           <Col xs={12} sm={12}>
             <Container>
-              <Stack gap={4} style={{display: 'flex', alignItems: 'center', minHeight: '30vh'}}>
-                {loading ? (
-                  <Spinner
-                    variant="primary"
-                    animation="border"
-                    role="status"
-                    style={{width: '100px', height: '100px', margin: 'auto'}}
-                  >
-                    <span className="visually-hidden">Loading...</span>
-                  </Spinner>
-                ) : (
-                  <Stack direction="horizontal" gap={4} style={{alignItems: 'stretch', justifyContent: 'center', flexWrap: 'wrap'}}>
-                    {data?.items?.map((item, index) => {
-                      return <VideoResult key={`video-result-${index}`} item={item} setActiveItem={setActiveItem} setLoadingMainVid={setLoadingMainVid} loading={loading} />
-                  })}
+              {pageInfo?.totalResults > 0 && (
+                <Stack gap={4} style={{display: 'flex', alignItems: 'center', minHeight: '30vh'}}>
+                  {loading ? (
+                    <Spinner
+                      variant="primary"
+                      animation="border"
+                      role="status"
+                      style={{width: '100px', height: '100px', margin: 'auto'}}
+                    >
+                      <span className="visually-hidden">Loading...</span>
+                    </Spinner>
+                  ) : (
+                    <>
+
+                      <p><b>{pageToken}</b> Found {pageInfo?.totalResults} results</p>
+                      <Stack direction="horizontal" gap={4} style={{alignItems: 'stretch', justifyContent: 'center', flexWrap: 'wrap'}}>
+                        {data?.items?.map((item, index) => {
+                          return <VideoResult key={`video-result-${index}`} item={item} setActiveItem={setActiveItem} setLoadingMainVid={setLoadingMainVid} loading={loading} />
+                      })})
+                    </Stack>
+                  </>
+                  )}
               </Stack>
-            )}
-            </Stack>
+              )}
             </Container>
           </Col>
-          <Col sm={12}>
-            <Pagination>
-              <Pagination.First />
-              <Pagination.Ellipsis />
-              <Pagination.Prev />
-              <Pagination.Item>{currentPage}</Pagination.Item>
-              <Pagination.Next onClick={(e) => {
-                console.log('click');
-                if (data.nextPageToken?.length) {
-                  setPageToken(data.nextPageToken);
-                  setCurrentPage((oldCurrentPage) => oldCurrentPage + 1);
+          <Col>
+            <Stack sm={12}>
+              <Pagination className="my-4" style={{display: 'flex', justifyContent: 'center', textAlign: 'center'}}>
+                {<Pagination.Prev onClick={(e) => {
+                  setPageToken(prevPageToken);
+                  setCurrentPage((currentPage) => currentPage - 1);
                   loadVideoResults();
-                }
-              }}/>
-              <Pagination.Ellipsis />
-              <Pagination.Last />
-            </Pagination>
+                }}>{prevPageToken} (Prev)</Pagination.Prev>}
+                <Pagination.Ellipsis />
+                <Pagination.Item>{currentPage}</Pagination.Item>
+                <Pagination.Ellipsis />
+                {<Pagination.Next onClick={(e) => {
+                  setPageToken(nextPageToken);
+                  setCurrentPage((currentPage) => currentPage + 1);
+                  loadVideoResults();
+                }}>{nextPageToken} (Next)</Pagination.Next>}
+              </Pagination>
+            </Stack>
           </Col>
         </Row>
       </Container>
