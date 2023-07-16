@@ -29,27 +29,26 @@ function App() {
     resultsPerPage: 0,
     totalResults: 0
   });
-  const options = useMemo(() => {
-    return {
-      key: process.env.REACT_APP_GOOGLE_API_KEY,
-      q: query,
-      pageToken: pageToken === null ? '' : pageToken,
-      part: 'snippet',
-      type: 'video',
-      maxResults: 3
-    };
-  }, [pageToken, query]);
 
   const loadVideoResults = useCallback(
     async function () {
+      const options = {
+        key: process.env.REACT_APP_GOOGLE_API_KEY,
+        q: query,
+        pageToken: pageToken === null ? '' : pageToken,
+        part: 'snippet',
+        type: 'video',
+        maxResults: 3
+      };
       const URL = "https://www.googleapis.com/youtube/v3/search?" + Object.keys(options).map((k) => k + '=' + encodeURIComponent(options[k])).join('&');
       setLoading(true);
 
       await fetch(URL)
       .then(res => res.json())
       .then(jsonRes => {
-        setNextPageToken(jsonRes?.nextPageToken);
-        setPrevPageToken(jsonRes?.prevPageToken);
+        console.log(jsonRes);
+        setNextPageToken(jsonRes?.nextPageToken || null);
+        setPrevPageToken(jsonRes?.prevPageToken || null);
         setPageInfo(jsonRes.pageInfo);
         setData(jsonRes);
         setLoading(false);
@@ -58,18 +57,19 @@ function App() {
         setLoading(false);
         console.error(err);
       })
-    }, [options]);
+    }, [query, pageToken]);
 
   return (
-    <div className="wrapper">
+    <Stack style={{alignItems: 'stretch'}}>
       <Header />
+
       <Container>
-        <Row className="App">
+        <Row className="App" style={{minHeight: 'calc(100vh - 150px - 2rem)'}}>
           <Col md={7} style={{justifyContent: 'center', display: 'flex', alignItems: 'center', margin: '2rem auto', flexWrap: 'wrap'}}>
             <Card style={{textAlign: 'center', width: '100%'}}>
               <Card.Header>Search For and Choose a Video</Card.Header>
               <Card.Body>
-                {loadingMainVid && activeItem ? <Spinner variant="primary" style={{width: '75px', height: '75px', margin: 'auto', fontSize: '30px'}} /> : <Video id={activeItem} />}
+                {loadingMainVid && activeItem ? <Spinner variant="primary" style={{width: '75px', height: '75px', margin: 'auto', fontSize: '30px'}} /> : activeItem ? <Video id={activeItem} /> : <></>}
               </Card.Body>
              </Card>
           </Col>
@@ -103,6 +103,24 @@ function App() {
               </Form>
             </Container>
           </Col>
+
+          <Col sm={12}>
+            <Stack>
+              <Pagination className="my-4" style={{display: 'flex', justifyContent: 'center', textAlign: 'center'}}>
+                {<Pagination.Prev onClick={(e) => {
+                  setPageToken(prevPageToken);
+                  setCurrentPage((currentPage) => currentPage - 1);
+                  loadVideoResults();
+                }}>{prevPageToken} (Prev)</Pagination.Prev>}
+                <Pagination.Item>{currentPage}</Pagination.Item>
+                {<Pagination.Next onClick={(e) => {
+                  setPageToken(nextPageToken);
+                  setCurrentPage((currentPage) => currentPage + 1);
+                  loadVideoResults();
+                }}>{nextPageToken} (Next)</Pagination.Next>}
+              </Pagination>
+            </Stack>
+          </Col>
           <Col xs={12} sm={12}>
             <Container>
               {pageInfo?.totalResults > 0 && (
@@ -118,7 +136,6 @@ function App() {
                     </Spinner>
                   ) : (
                     <>
-
                       <p><b>{pageToken}</b> Found {pageInfo?.totalResults} results</p>
                       <Stack direction="horizontal" gap={4} style={{alignItems: 'stretch', justifyContent: 'center', flexWrap: 'wrap'}}>
                         {data?.items?.map((item, index) => {
@@ -131,29 +148,11 @@ function App() {
               )}
             </Container>
           </Col>
-          <Col>
-            <Stack sm={12}>
-              <Pagination className="my-4" style={{display: 'flex', justifyContent: 'center', textAlign: 'center'}}>
-                {<Pagination.Prev onClick={(e) => {
-                  setPageToken(prevPageToken);
-                  setCurrentPage((currentPage) => currentPage - 1);
-                  loadVideoResults();
-                }}>{prevPageToken} (Prev)</Pagination.Prev>}
-                <Pagination.Ellipsis />
-                <Pagination.Item>{currentPage}</Pagination.Item>
-                <Pagination.Ellipsis />
-                {<Pagination.Next onClick={(e) => {
-                  setPageToken(nextPageToken);
-                  setCurrentPage((currentPage) => currentPage + 1);
-                  loadVideoResults();
-                }}>{nextPageToken} (Next)</Pagination.Next>}
-              </Pagination>
-            </Stack>
-          </Col>
         </Row>
       </Container>
+
       <Footer />
-    </div>
+    </Stack>
   );
 }
 

@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 const Header = () => {
   return (
-    <div className="bg-primary">
+    <div className="bg-primary" style={{height: '70px'}}>
       <Container className="mb-4 px-4 pt-1">
         <Navbar expand="sm">
           <Navbar.Brand href="/" className="text-white">
