@@ -13,11 +13,11 @@ import Header from './Header';
 import Footer from './Footer';
 import Video from './Video';
 import VideoResult from './VideoResult';
-import fauxData from './fauxData';
+// import fauxData from './fauxData';
 
 function App() {
   const [loadingMainVid, setLoadingMainVid] = useState(false);
-  const [data, setData] = useState(fauxData);
+  const [data, setData] = useState(null);
   const [query, setQuery] = useState(null);
   const [loading, setLoading] = useState(false);
   const [activeItem, setActiveItem] = useState(null);
