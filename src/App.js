@@ -32,21 +32,23 @@ function App() {
 
   const loadVideoResults = useCallback(
     async function () {
-      const options = {
+      let options = {
         key: process.env.REACT_APP_GOOGLE_API_KEY,
         q: query,
-        pageToken: pageToken === null ? '' : pageToken,
         part: 'snippet',
         type: 'video',
         maxResults: 3
       };
+      if (pageToken?.length) {
+        options = Object.assign({ pageToken: pageToken }, options);
+      }
       const URL = "https://www.googleapis.com/youtube/v3/search?" + Object.keys(options).map((k) => k + '=' + encodeURIComponent(options[k])).join('&');
+
       setLoading(true);
 
       await fetch(URL)
       .then(res => res.json())
       .then(jsonRes => {
-        console.log(jsonRes);
         setNextPageToken(jsonRes?.nextPageToken || null);
         setPrevPageToken(jsonRes?.prevPageToken || null);
         setPageInfo(jsonRes.pageInfo);
@@ -77,6 +79,10 @@ function App() {
             <Container>
               <Form onSubmit={(e) => {
                 e.preventDefault();
+                setCurrentPage(1);
+                setPageToken(null);
+                setPrevPageToken(null);
+                setNextPageToken(null);
                 loadVideoResults();
               }}>
                 <InputGroup className="mb-3">
@@ -106,19 +112,21 @@ function App() {
 
           <Col sm={12}>
             <Stack>
-              <Pagination className="my-4" style={{display: 'flex', justifyContent: 'center', textAlign: 'center'}}>
-                {<Pagination.Prev onClick={(e) => {
+              {(pageToken || nextPageToken) && <Pagination className="my-4" style={{display: 'flex', justifyContent: 'center', textAlign: 'center'}}>
+                {prevPageToken && <Pagination.Prev onClick={(e) => {
                   setPageToken(prevPageToken);
                   setCurrentPage((currentPage) => currentPage - 1);
                   loadVideoResults();
                 }}>{prevPageToken} (Prev)</Pagination.Prev>}
-                <Pagination.Item>{currentPage}</Pagination.Item>
-                {<Pagination.Next onClick={(e) => {
+                <Pagination.Ellipsis />
+                <Pagination.Item>{pageToken} {currentPage}</Pagination.Item>
+                <Pagination.Ellipsis />
+                {nextPageToken && <Pagination.Next onClick={(e) => {
                   setPageToken(nextPageToken);
                   setCurrentPage((currentPage) => currentPage + 1);
                   loadVideoResults();
                 }}>{nextPageToken} (Next)</Pagination.Next>}
-              </Pagination>
+              </Pagination>}
             </Stack>
           </Col>
           <Col xs={12} sm={12}>
@@ -140,7 +148,7 @@ function App() {
                       <Stack direction="horizontal" gap={4} style={{alignItems: 'stretch', justifyContent: 'center', flexWrap: 'wrap'}}>
                         {data?.items?.map((item, index) => {
                           return <VideoResult key={`video-result-${index}`} item={item} setActiveItem={setActiveItem} setLoadingMainVid={setLoadingMainVid} loading={loading} />
-                      })})
+                      })}
                     </Stack>
                   </>
                   )}
