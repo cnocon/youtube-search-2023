@@ -15,9 +15,6 @@ const Footer = ({ setLoadingMainVid, setActiveItem, item, loading }) => {
       </Spinner>
     ) : (
       <Card style={{flexBasis: '30%', display: 'flex', justifyContent: 'center'}}>
-        <Card.Header style={{display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '84px', width: '100%', textAlign: 'center', fontWeight: '600'}}>
-          {item.snippet.title}
-        </Card.Header>
         <Card.Body style={{height: '100%', textAlign: 'center'}}>
           <Image
             src={item.snippet.thumbnails.medium.url}
@@ -35,6 +32,9 @@ const Footer = ({ setLoadingMainVid, setActiveItem, item, loading }) => {
           {/* <hr />
           <p style={{textAlign: 'left', marginTop: 'auto'}}>{item.snippet.description}</p> */}
       </Card.Body>
+      <Card.Footer style={{display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', fontWeight: '600'}}>
+          {item.snippet.title}
+        </Card.Footer>
 
     </Card>
   );
